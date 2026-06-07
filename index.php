@@ -1,20 +1,28 @@
 <?php
-// index.php
-// Este archivo actúa como el punto de entrada principal del sitio.
+/*
+ * Archivo de control principal - Punto de entrada
+ * Autor: Juan Luis Martínez Rivero
+ * Descripción: Gestiona el acceso de los usuarios según su rol.
+ */
 
 session_start();
 
-// Si el usuario ya inició sesión, lo enviamos directo a su panel
+// Validamos si ya existe una sesión activa
 if (isset($_SESSION['id_usuario'])) {
-    if ($_SESSION['rol'] == 'vendedor') {
+    
+    // Verificamos el rol del usuario para redirigirlo a su panel correspondiente
+    $rol = $_SESSION['rol'];
+    
+    if ($rol === 'vendedor') {
         header("Location: views/dashboard_vendedor.php");
     } else {
         header("Location: views/dashboard_comprador.php");
     }
-    exit();
+    
+    exit(); // Finalizamos el script después de la redirección
 }
 
-// Si no ha iniciado sesión, lo enviamos al login
+// Si no hay sesión, mandamos al usuario a iniciar sesión
 header("Location: views/login.php");
 exit();
 ?>
