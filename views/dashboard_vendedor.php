@@ -2,7 +2,6 @@
 // views/dashboard_vendedor.php
 session_start();
 
-// Validar que el usuario haya iniciado sesión y sea vendedor
 if (!isset($_SESSION['id_usuario']) || $_SESSION['rol'] !== 'vendedor') {
     header("Location: login.php");
     exit();

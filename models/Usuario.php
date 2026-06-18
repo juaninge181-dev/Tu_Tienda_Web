@@ -45,6 +45,7 @@ class Usuario {
 
     // Método para buscar un usuario por su correo electrónico y validar login
     public function loginPorCorreo() {
+        // Consultamos las columnas clave asegurándonos de que coincidan con la base de datos
         $query = "SELECT id_usuario, nombre, password, rol FROM " . $this->table_name . " WHERE correo = :correo LIMIT 0,1";
         
         $stmt = $this->conn->prepare($query);

@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - TuTiendaWeb</title>
-    <!-- Importamos una tipografía moderna y limpia (Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- ESTILOS GLOBALES --- */
         * {
             margin: 0;
             padding: 0;
@@ -25,13 +23,11 @@
             color: #333;
         }
 
-        /* --- CONTENEDOR PRINCIPAL (PANTALLA DIVIDIDA) --- */
         .login-container {
             display: flex;
             width: 100%;
         }
 
-        /* --- PANEL IZQUIERDO (BANNER DE BIENVENIDA) --- */
         .brand-panel {
             flex: 1;
             background: radial-gradient(circle at top left, #1a365d, #0f172a);
@@ -45,7 +41,6 @@
             overflow: hidden;
         }
 
-        /* Elementos decorativos abstractos (ondas doradas de fondo) */
         .brand-panel::before, .brand-panel::after {
             content: '';
             position: absolute;
@@ -74,7 +69,6 @@
             max-width: 450px;
         }
 
-        /* Logotipo simulado con iconos SVG */
         .brand-logo {
             margin-bottom: 20px;
         }
@@ -82,7 +76,7 @@
         .brand-logo svg {
             width: 80px;
             height: 80px;
-            fill: #d4af37; /* Dorado */
+            fill: #d4af37;
         }
 
         .brand-content h1 {
@@ -102,20 +96,18 @@
             font-weight: 300;
         }
 
-        /* --- PANEL DERECHO (FORMULARIO DE LOGIN) --- */
         .form-panel {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 40px;
-            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80'); /* Fondo de oficina sutil de la imagen */
+            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             position: relative;
         }
 
-        /* Capa superpuesta para difuminar el fondo de la oficina */
         .form-panel::before {
             content: '';
             position: absolute;
@@ -128,7 +120,6 @@
             z-index: 1;
         }
 
-        /* Tarjeta flotante del formulario */
         .login-card {
             background: #ffffff;
             padding: 45px;
@@ -153,7 +144,6 @@
             margin-bottom: 30px;
         }
 
-        /* Estilos de los campos del formulario */
         .input-group {
             margin-bottom: 22px;
             position: relative;
@@ -183,7 +173,6 @@
             box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
         }
 
-        /* Icono para ocultar/mostrar contraseña (estático por ahora) */
         .password-toggle {
             position: absolute;
             right: 14px;
@@ -192,7 +181,6 @@
             color: #94a3b8;
         }
 
-        /* Enlace de recuperación */
         .forgot-password {
             display: block;
             text-align: center;
@@ -207,11 +195,10 @@
             text-decoration: underline;
         }
 
-        /* Botón de ingreso verde esmeralda */
         .btn-submit {
             width: 100%;
             padding: 14px;
-            background-color: #2b8a78; /* Color verde de la propuesta */
+            background-color: #2b8a78;
             color: #ffffff;
             border: none;
             border-radius: 8px;
@@ -229,7 +216,6 @@
             transform: scale(0.98);
         }
 
-        /* Caja inferior de registro */
         .register-box {
             margin-top: 25px;
             padding-top: 20px;
@@ -249,10 +235,9 @@
             text-decoration: underline;
         }
 
-        /* --- RESPONSIVIDAD (TABLETS Y CELULARES) --- */
         @media (max-width: 900px) {
             .brand-panel {
-                display: none; /* Escondemos el panel izquierdo en pantallas pequeñas para priorizar el login */
+                display: none;
             }
             body {
                 background-color: #ffffff;
@@ -275,10 +260,8 @@
 
     <div class="login-container">
         
-        <!-- PANEL IZQUIERDO: Branding e Identidad -->
         <div class="brand-panel">
             <div class="brand-content">
-                <!-- Icono representativo de Comercio/Conexión -->
                 <div class="brand-logo">
                     <svg viewBox="0 0 24 24">
                         <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.5a1 1 0 0 1-2 0V13a1 1 0 0 1 2 0zm0-5.5a1 1 0 1 1 1-1 1 1 0 0 1-1 1z" opacity=".2"/>
@@ -290,13 +273,11 @@
             </div>
         </div>
 
-        <!-- PANEL DERECHO: Formulario Unificado -->
         <div class="form-panel">
             <div class="login-card">
                 <h2>¡Bienvenido de nuevo!</h2>
                 <p class="subtitle">Ingresa tus credenciales para acceder a la plataforma.</p>
 
-                <!-- Conservamos exactamente tu lógica de backend -->
                 <form action="../controllers/UsuarioController.php?action=login" method="POST">
                     
                     <div class="input-group">
@@ -306,8 +287,7 @@
 
                     <div class="input-group">
                         <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password" placeholder="••••••••" required>
-                        <!-- Icono de ojo simulado (SVG) para la contraseña -->
+                        <input type="password" id="password" name="contrasena" placeholder="••••••••" required>
                         <span class="password-toggle">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
