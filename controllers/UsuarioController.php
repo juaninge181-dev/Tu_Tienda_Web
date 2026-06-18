@@ -27,21 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($action == 'registrar') {
         $usuario->nombre = $_POST['nombre'];
         $usuario->correo = $_POST['correo'];
-        $usuario->password = $_POST['password'];
+        $usuario->password = $_POST['contrasena']; // Cambiado a 'contrasena' para coincidir con la vista
         $usuario->rol = $_POST['rol'];
         
         if ($usuario->registrar()) {
             header("Location: ../views/login.php?registro=exitoso");
             exit();
         } else {
-            echo "<h3>Hubo un error al registrar el usuario.</h3>";
+            header("Location: ../views/registro.php?error=registro_fallido");
+            exit();
         }
     }
     
     // Acción de Login
     if ($action == 'login') {
         $usuario->correo = $_POST['correo'];
-        $password_ingresada = $_POST['password'];
+        $password_ingresada = $_POST['contrasena']; // Cambiado a 'contrasena' para coincidir con el formulario corregido
         
         $datos_usuario = $usuario->loginPorCorreo();
         
@@ -62,10 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 exit();
                 
             } else {
-                echo "<h3>Contraseña incorrecta.</h3> <a href='../views/login.php'>Volver</a>";
+                // Redirige al login indicando error de contraseña
+                header("Location: ../views/login.php?error=password");
+                exit();
             }
         } else {
-            echo "<h3>El correo electrónico no está registrado.</h3> <a href='../views/login.php'>Volver</a>";
+            // Redirige al login indicando que el correo no existe
+            header("Location: ../views/login.php?error=user_not_found");
+            exit();
         }
     }
 }
